@@ -1,0 +1,39 @@
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Database
+*.sqlite3
+
+# Django stuff
+/media/
+staticfiles/
+db.sqlite3
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+
+# macOS-specific files
+.DS_Store
+
+# Heroku
+*.log
+.env
+Procfile~
+
+# IDEs
+.vscode/
+.idea/
+
+# Node.js
+node_modules/
+
+# Ignore environment variables and sensitive files
+.env
