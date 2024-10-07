@@ -1,50 +1,72 @@
-{% load static %}
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile List</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <h1>One Piece Profiles</h1>
-    <ul>
-        <li>
-            <h2>Monkey D. Luffy</h2>
-            <p><strong>City:</strong> Foosha Village</p>
-            <p><strong>Email:</strong> luffy@onepiece.com</p>
-            <p><img src="https://i0.wp.com/blog.indiegala.com/wp-content/uploads/2021/09/cover-4.jpg?fit=1200%2C900&ssl=1" alt="Luffy's profile picture" width="150"></p>
-        </li>
-        <li>
-            <h2>Roronoa Zoro</h2>
-            <p><strong>City:</strong> Shimotsuki Village</p>
-            <p><strong>Email:</strong> zoro@onepiece.com</p>
-            <p><img src="https://www.dexerto.com/cdn-image/wp-content/uploads/2023/04/20/one-piece-zoro-in-wano-arc.jpeg?width=1200&quality=60&format=auto" alt="Zoro's profile picture" width="150"></p>
-        </li>
-        <li>
-            <h2>Nami</h2>
-            <p><strong>City:</strong> Cocoyasi Village</p>
-            <p><strong>Email:</strong> nami@onepiece.com</p>
-            <p><img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2024/02/nami-from-one-piece.jpg" alt="Nami's profile picture" width="150"></p>
-        </li>
-        <li>
-            <h2>Sanji</h2>
-            <p><strong>City:</strong> Baratie</p>
-            <p><strong>Email:</strong> sanji@onepiece.com</p>
-            <p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTnK7VfA3Kd7kiaxJ83wvUhpA8ZMTZhE7IKA&s" alt="Sanji's profile picture" width="150"></p>
-        </li>
-        <li>
-            <h2>Nico Robin</h2>
-            <p><strong>City:</strong> Ohara</p>
-            <p><strong>Email:</strong> robin@onepiece.com</p>
-            <p><img src="https://images.alphacoders.com/136/thumb-1920-1360725.png" alt="Robin's profile picture" width="150"></p>
-        </li>
-    </ul>
-</body>
-</html>
-
-
-
+{% extends 'mini_fb/base.html' %} {% block title %} All Profiles - Mini FB {%
+endblock %} {% block content %}
+<h2>All Profiles</h2>
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>City</th>
+      <th>Profile Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Monkey</td>
+      <td>D. Luffy</td>
+      <td>Foosha Village</td>
+      <td>
+        <img
+          src="https://example.com/luffy_image.jpg"
+          alt="Monkey D. Luffy"
+          width="100"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Roronoa</td>
+      <td>Zoro</td>
+      <td>Shimotsuki Village</td>
+      <td>
+        <img
+          src="https://example.com/zoro_image.jpg"
+          alt="Roronoa Zoro"
+          width="100"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Nami</td>
+      <td></td>
+      <td>Cocoyasi Village</td>
+      <td>
+        <img src="https://example.com/nami_image.jpg" alt="Nami" width="100" />
+      </td>
+    </tr>
+    <tr>
+      <td>Sanji</td>
+      <td></td>
+      <td>Baratie</td>
+      <td>
+        <img
+          src="https://example.com/sanji_image.jpg"
+          alt="Sanji"
+          width="100"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Nico</td>
+      <td>Robin</td>
+      <td>Ohara</td>
+      <td>
+        <img
+          src="https://example.com/robin_image.jpg"
+          alt="Nico Robin"
+          width="100"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

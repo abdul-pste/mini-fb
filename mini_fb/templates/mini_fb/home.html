@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Mini_FB{% endblock %}
+
+{% block content %}
+<section class="home-content">
+    <h1>Welcome to Mini_FB!</h1>
+    <p>This is a simple social media profile application.</p>
+    <div class="cta-buttons">
+        <a href="{% url 'show_all_profiles' %}" class="btn">View Profiles</a>
+        <a href="#about" class="btn">Learn More</a>
+    </div>
+
+    <h1>Welcome to Mini FB chicken nugget</h1>
+</section>
+{% endblock %}
