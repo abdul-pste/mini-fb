@@ -1,1 +1,1 @@
-https://dashboard.heroku.com/apps/mini-fb412
+https://mini-fb412-1f8bb6fbf9f5.herokuapp.com/
