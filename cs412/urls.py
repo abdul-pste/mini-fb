@@ -21,4 +21,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mini_fb/', include('mini_fb.urls')),
+    path('', RedirectView.as_view(url='mini_fb/')),
 ]
