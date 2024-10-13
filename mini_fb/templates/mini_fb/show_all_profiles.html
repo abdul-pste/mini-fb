@@ -1,4 +1,4 @@
-{% extends 'mini_fb/base.html' %} 
+{% extends 'mini_fb/base.html' %}
 
 {% block title %}
     Show All Profiles
@@ -17,66 +17,29 @@
     </tr>
   </thead>
   <tbody>
+    {% for profile in profiles %}
     <tr>
-      <td>Monkey</td>
-      <td>D. Luffy</td>
-      <td>Foosha Village</td>
       <td>
-        <img
-          src="https://miro.medium.com/v2/resize:fit:736/1*YqfVlyCe06DfcPsR3kpYrw.jpeg"
-          alt="Monkey D. Luffy"
-          width="100"
-        />
+        <a href="{% url 'show_profile' profile.pk %}">{{ profile.first_name }}</a>
+      </td>
+      <td>{{ profile.last_name }}</td>
+      <td>{{ profile.city }}</td>
+      <td>
+        <a href="{% url 'show_profile' profile.pk %}">
+          <img
+            src="{{ profile.profile_image_url }}"
+            alt="{{ profile.first_name }} {{ profile.last_name }}"
+            width="100"
+          />
+        </a>
       </td>
     </tr>
+    {% empty %}
     <tr>
-      <td>Roronoa</td>
-      <td>Zoro</td>
-      <td>Shimotsuki Village</td>
-      <td>
-        <img
-          src="https://images.saymedia-content.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTc2NDY1MjA3MzYxODA3NTcz/why-is-zoro-the-best-character-in-one-piece.jpg"
-          alt="Roronoa Zoro"
-          width="100"
-        />
-      </td>
+      <td colspan="4">No profiles available.</td>
     </tr>
-    <tr>
-      <td>Nami</td>
-      <td></td>
-      <td>Cocoyasi Village</td>
-      <td>
-        <img
-          src="https://static1.srcdn.com/wordpress/wp-content/uploads/2024/02/nami-from-one-piece.jpg"
-          alt="Nami"
-          width="100"
-        />
-      </td>
-    </tr>
-    <tr>
-      <td>Sanji</td>
-      <td></td>
-      <td>Baratie</td>
-      <td>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTnK7VfA3Kd7kiaxJ83wvUhpA8ZMTZhE7IKA&s"
-          alt="Sanji"
-          width="100"
-        />
-      </td>
-    </tr>
-    <tr>
-      <td>Nico</td>
-      <td>Robin</td>
-      <td>Ohara</td>
-      <td>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmNnXUQnAr83TiVrMkbsJ_Dyh44g5jidnvBg&s"
-          alt="Nico Robin"
-          width="100"
-        />
-      </td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
+
 {% endblock %}

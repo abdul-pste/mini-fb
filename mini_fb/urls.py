@@ -8,4 +8,5 @@ urlpatterns = [
     path('base.html', views.home),
     path('', views.home, name='home'),
     path('show_all_profiles/', views.ShowAllProfilesView.as_view(), name='show_all_profiles'),
+    path('profile/<int:pk>/', views.ShowProfilePageView.as_view(), name='show_profile'),
 ]
