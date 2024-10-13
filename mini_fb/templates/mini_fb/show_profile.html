@@ -12,11 +12,13 @@
     <p><strong>Email:</strong> {{ profile.email }}</p>
 
     <h2>Status Messages</h2>
-    <ul class="status-messages">
+    <a href="{% url 'create_status' profile.pk %}">Post a New Status Message</a>
+
+    <ul>
         {% for message in profile.get_status_messages %}
-            <li>{{ message.timestamp }} - {{ message.message }}</li>
+            <li>{{ message.timestamp }}: {{ message.message }}</li>
         {% empty %}
-            <p>No status messages available.</p>
+            <p>No status messages yet.</p>
         {% endfor %}
     </ul>
 </div>

@@ -15,6 +15,9 @@ class Profile(models.Model):
     
     def get_status_messages(self):
         return self.status_messages.order_by('-timestamp')
+    
+    def get_absolute_url(self):
+        return reverse('show_profile', kwargs={'pk': self.pk})
 
     
 
