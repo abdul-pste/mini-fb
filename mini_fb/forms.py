@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile, StatusMessage
+from .models import Profile, StatusMessage, Image
 
 class CreateProfileForm(forms.ModelForm):
     class Meta:
@@ -10,3 +10,9 @@ class CreateStatusMessageForm(forms.ModelForm):
     class Meta:
         model = StatusMessage
         fields = ['message']
+
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ['image_file']

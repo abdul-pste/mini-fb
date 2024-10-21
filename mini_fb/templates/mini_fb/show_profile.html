@@ -1,26 +1,44 @@
-
 {% extends "mini_fb/base.html" %}
+{% load static %}
 
-
-{% block title %}{{ profile.first_name }} {{ profile.last_name }} - Profile{% endblock %}
+{% block title %}
+    {{ profile.first_name }} {{ profile.last_name }} - Profile
+{% endblock %}
 
 {% block content %}
 <div class="profile-page">
-    <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
-    <img src="{{ profile.profile_image_url }}" alt="{{ profile.first_name }}'s profile picture" class="profile-image-large">
-    <p><strong>City:</strong> {{ profile.city }}</p>
-    <p><strong>Email:</strong> {{ profile.email }}</p>
+  <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
+  <img
+    src="{{ profile.profile_image_url }}"
+    alt="{{ profile.first_name }}'s profile picture"
+    class="profile-image-large"
+  />
+  <p><strong>City:</strong> {{ profile.city }}</p>
+  <p><strong>Email:</strong> {{ profile.email }}</p>
 
-    <h2>Status Messages</h2>
-    <a href="{% url 'create_status' profile.pk %}">Post a New Status Message</a>
+  <h2>Status Messages</h2>
+  <a href="{% url 'create_status' profile.pk %}">Post a New Status Message</a>
 
-    <ul>
-        {% for message in profile.get_status_messages %}
-            <li>{{ message.timestamp }}: {{ message.message }}</li>
-        {% empty %}
-            <p>No status messages yet.</p>
-        {% endfor %}
-    </ul>
+  <ul>
+    {% for message in profile.get_status_messages %}
+    <li>{{ message.timestamp }}: {{ message.message }}</li>
+
+    <!-- Display images associated with the status message -->
+    <div class="status-images">
+      {% for img in message.get_images %}
+      <img
+        src="{{ img.image_file.url }}"
+        alt="Image for {{ message.message }}"
+        width="300"
+      />
+      {% empty %}
+      <p>No images for this status message.</p>
+      {% endfor %}
+    </div>
+    {% empty %}
+    <p>No status messages yet.</p>
+    {% endfor %}
+  </ul>
 </div>
 <a href="{% url 'show_all_profiles' %}">Back to Profiles</a>
 {% endblock %}

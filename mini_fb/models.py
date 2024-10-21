@@ -18,6 +18,12 @@ class Profile(models.Model):
     
     def get_absolute_url(self):
         return reverse('show_profile', kwargs={'pk': self.pk})
+    
+class Image(models.Model):
+    image_file = models.ImageField(upload_to='images/')
+    status_message = models.ForeignKey('StatusMessage', on_delete=models.CASCADE, related_name='images')
+    timestamp = models.DateTimeField(default=timezone.now)
+
 
     
 
@@ -28,3 +34,6 @@ class StatusMessage(models.Model):
 
     def __str__(self):
         return f"{self.timestamp}: {self.message}"
+    
+    def get_images(self):
+        return self.images.all()

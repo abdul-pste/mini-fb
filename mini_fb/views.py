@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import DetailView, CreateView, ListView
 from .models import Profile, StatusMessage
-from .forms import CreateProfileForm, CreateStatusMessageForm
+from .forms import CreateProfileForm, CreateStatusMessageForm, Image
 
 
 
@@ -36,7 +36,6 @@ class CreateProfileView(CreateView):
     def get_success_url(self):
         return reverse('show_profile', kwargs={'pk': self.object.pk})
     
-
 class CreateStatusMessageView(CreateView):
     model = StatusMessage
     form_class = CreateStatusMessageForm
@@ -49,9 +48,16 @@ class CreateStatusMessageView(CreateView):
         return context
 
     def form_valid(self, form):
+        # Save the status message
         profile = get_object_or_404(Profile, pk=self.kwargs['pk'])
-        form.instance.profile = profile
-        return super().form_valid(form)
+        sm = form.save(commit=False)  # Save the form but don't commit yet
+        sm.profile = profile
+        sm.save()
 
-    def get_success_url(self):
-        return reverse('show_profile', kwargs={'pk': self.kwargs['pk']})
+        # Handle file uploads
+        files = self.request.FILES.getlist('files')
+        for file in files:
+            image = Image(image_file=file, status_message=sm)  # Associate image with status message
+            image.save()
+
+        return redirect('show_profile', pk=profile.pk)
