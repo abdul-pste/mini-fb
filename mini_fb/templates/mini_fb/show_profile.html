@@ -17,31 +17,35 @@
   <p><strong>Email:</strong> {{ profile.email }}</p>
 
   <h2>Status Messages</h2>
-  <a href="{% url 'create_status' profile.pk %}">Post a New Status Message</a>
-  <a href="{% url 'update_profile' profile.pk %}">Update Profile</a>
-  <a href="{% url 'delete_status' message.pk %}" class="button" style="background-color: #e74c3c;">Delete</a>
+  <a href="{% url 'create_status' profile.pk %}" class="button">Post a New Status Message</a>
 
-
-  <ul>
+  <ul class="status-message-list">
     {% for message in profile.get_status_messages %}
-    <li>{{ message.timestamp }}: {{ message.message }}</li>
+    <li class="status-message">
+        <p>{{ message.timestamp }}: {{ message.message }}</p>
 
-    <!-- Display images associated with the status message -->
-    <div class="status-images">
-      {% for img in message.get_images %}
-      <img
-        src="{{ img.image_file.url }}"
-        alt="Image for {{ message.message }}"
-        width="300"
-      />
-      {% empty %}
-      <p>No images for this status message.</p>
-      {% endfor %}
-    </div>
+        <!-- Display images associated with the status message -->
+        <div class="status-images">
+          {% for img in message.get_images %}
+            <img
+              src="{{ img.image_file.url }}"
+              alt="Image for {{ message.message }}"
+              width="300"
+            />
+          {% empty %}
+            <p>No images for this status message.</p>
+          {% endfor %}
+        </div>
+
+        <!-- Add Update and Delete links for each status message -->
+        <a href="{% url 'update_status' message.pk %}" class="button">Update</a>
+        <a href="{% url 'delete_status' message.pk %}" class="button" style="background-color: #e74c3c;">Delete</a>
+    </li>
     {% empty %}
-    <p>No status messages yet.</p>
+        <p>No status messages yet.</p>
     {% endfor %}
   </ul>
 </div>
+
 <a href="{% url 'show_all_profiles' %}">Back to Profiles</a>
 {% endblock %}
