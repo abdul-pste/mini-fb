@@ -88,4 +88,5 @@ class UpdateStatusMessageView(UpdateView):
     template_name = 'mini_fb/update_status_form.html'
 
     def get_success_url(self):
-        return reverse('show_profile', kwargs={'pk': self.object.profile.pk})
+        profile_pk = self.object.profile.pk
+        return reverse('show_profile', kwargs={'pk': profile_pk})
