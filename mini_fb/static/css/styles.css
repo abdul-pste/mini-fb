@@ -1,61 +1,79 @@
-/* General Page Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
+/* styles.css */
+
+/* Basic reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-h1, h2 {
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
-a {
-    text-decoration: none;
-    color: #16a085;
-}
-
-a:hover {
-    color: #1abc9c;
-}
-
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
 /* Navigation Bar */
 nav {
-    background-color: #34495e;
-    padding: 10px;
-    text-align: center;
-}
-
-nav a {
+    background-color: #333;
     color: #fff;
-    padding: 10px 20px;
-    display: inline-block;
-    margin-right: 15px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
     font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: #fff;
 }
 
-nav a:hover {
-    background-color: #16a085;
+.nav-links {
+    list-style: none;
+    display: flex;
 }
 
-/* Profile Page */
-.profile-page {
-    text-align: center;
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f39c12; /* Highlight color on hover */
+}
+
+/* Main Content */
+main {
     padding: 20px;
+}
+
+
+/* General styles for the profile page */
+.profile-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-page h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .profile-page img.profile-image-large {
@@ -68,54 +86,54 @@ nav a:hover {
 
 .profile-page p {
     font-size: 1.1em;
+    color: #555;
     margin-bottom: 10px;
 }
 
-/* Buttons */
-.button {
+.profile-page a {
     display: inline-block;
-    margin-top: 10px;
+    margin: 10px 0;
     padding: 10px 20px;
     background-color: #16a085;
     color: #fff;
     border-radius: 5px;
     text-decoration: none;
+    font-size: 1em;
     transition: background-color 0.3s ease;
 }
 
-.button:hover {
+.profile-page a:hover {
     background-color: #1abc9c;
 }
 
-/* Status Message List */
-.status-message-list {
+/* Status messages styles */
+ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 20px;
 }
 
 .status-message {
-    padding: 15px;
+    padding: 20px;
     margin-bottom: 20px;
-    background-color: #f9f9f9;
+    background-color: #fff;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-}
-
-.status-message p {
-    margin-bottom: 8px;
-    font-size: 1.1em;
-    color: #34495e;
 }
 
 .status-message h3 {
     font-size: 1.2em;
-    margin-bottom: 10px;
     color: #2c3e50;
+    margin-bottom: 10px;
 }
 
-/* Status Message Images */
+.status-message p {
+    font-size: 1em;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+/* Image gallery for status images */
 .status-images {
     display: flex;
     flex-wrap: wrap;
@@ -136,70 +154,10 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* Table Styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background-color: #16a085;
-    color: white;
-    font-weight: bold;
-}
-
-td img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-/* Forms */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-form label {
-    font-weight: bold;
-}
-
-form input, form textarea {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%;
-}
-
-form button {
-    padding: 10px;
-    font-size: 1em;
-    background-color: #16a085;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #1abc9c;
-}
-
-/* Footer */
-footer {
+/* Empty status message text */
+p.no-status-messages {
+    color: #888;
     text-align: center;
-    padding: 20px;
-    background-color: #34495e;
-    color: #fff;
+    font-style: italic;
     margin-top: 20px;
 }
