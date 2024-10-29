@@ -3,10 +3,12 @@
 
 {% block content %}
     <h2>Update Profile</h2>
-    <form method="post">
+    <form method="post" action="{% url 'update_status' message.pk %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update Profile</button>
+        <!-- form fields -->
+        <button type="submit">Update</button>
     </form>
-    <a href="{% url 'show_profile' profile.pk %}">Cancel</a>
+    
+    <!-- or a link to go back to the profile page -->
+    <a href="{% url 'show_profile' message.profile.pk %}">Back to Profile</a>
 {% endblock %}

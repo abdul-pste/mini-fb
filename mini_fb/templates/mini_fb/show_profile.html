@@ -45,6 +45,20 @@
         <p>No status messages yet.</p>
     {% endfor %}
   </ul>
+
+
+  <h2>Friends</h2>
+  <ul>
+      {% for friend in profile.get_friends %}
+          <li><a href="{% url 'show_profile' friend.pk %}">{{ friend.first_name }} {{ friend.last_name }}</a></li>
+      {% empty %}
+          <p>No friends yet.</p>
+      {% endfor %}
+  </ul>
+
+  <a href="{% url 'news_feed' profile.pk %}">View News Feed</a>
+
+
 </div>
 
 <a href="{% url 'show_all_profiles' %}">Back to Profiles</a>

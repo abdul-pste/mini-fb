@@ -208,3 +208,103 @@ footer {
     margin-top: 40px;
     font-size: 0.9em;
 }
+
+
+/* CSS file */
+
+.news-feed-container {
+    padding: 20px;
+}
+
+.news-feed-list {
+    list-style: none;
+    padding: 0;
+}
+
+.news-feed-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-message {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.timestamp {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.status-images {
+    margin-top: 10px;
+}
+
+.status-image {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+
+/* CSS file */
+
+.friend-suggestions-container {
+    padding: 20px;
+}
+
+.suggested-friends-list {
+    list-style: none;
+    padding: 0;
+}
+
+.suggested-friend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.friend-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.add-friend-button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.add-friend-button:hover {
+    background-color: #45a049;
+}
