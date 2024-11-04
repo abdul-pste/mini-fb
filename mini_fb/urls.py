@@ -4,7 +4,7 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 from .views import UpdateProfileView, DeleteStatusMessageView, UpdateStatusMessageView, CreateFriendView, ShowFriendSuggestionsView, ShowNewsFeedView
-
+from .models import Profile
 
 urlpatterns = [
     path('profiles/', views.profile_list, name='profile_list'),
