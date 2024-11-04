@@ -3,7 +3,8 @@ from django.urls import reverse
 from django.views.generic import DetailView, CreateView, ListView, UpdateView, DeleteView, View
 from .models import Profile, StatusMessage
 from .forms import CreateProfileForm, CreateStatusMessageForm, Image, UpdateProfileForm
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Function-based view for the profile list
@@ -32,6 +33,20 @@ class CreateProfileView(CreateView):
     model = Profile
     form_class = CreateProfileForm
     template_name = 'mini_fb/create_profile_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_form'] = UserCreationForm()
+        return context
+
+    def form_valid(self, form):
+        user_form = UserCreationForm(self.request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
+            form.instance.user = user
+            return super().form_valid(form)
+        else:
+            return self.form_invalid(form)
 
     def get_success_url(self):
         return reverse('show_profile', kwargs={'pk': self.object.pk})
@@ -62,8 +77,7 @@ class CreateStatusMessageView(CreateView):
 
         return redirect('show_profile', pk=profile.pk)
     
-
-class UpdateProfileView(UpdateView):
+class UpdateProfileView(LoginRequiredMixin, UpdateView):
     model = Profile
     form_class = UpdateProfileForm
     template_name = 'mini_fb/update_profile_form.html'
@@ -71,6 +85,9 @@ class UpdateProfileView(UpdateView):
     def get_success_url(self):
         # Redirect to the updated profile page
         return reverse('show_profile', kwargs={'pk': self.object.pk})
+    
+    def get_object(self):
+        return Profile.objects.get(user=self.request.user)
     
 
 class UpdateStatusMessageView(UpdateView):
