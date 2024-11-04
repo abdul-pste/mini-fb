@@ -7,14 +7,20 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 
 
-# Function-based view for the profile list
+
+class ProfileListView(ListView):
+    model = Profile
+    template_name = 'mini_fb/profile_list.html'
+    context_object_name = 'profiles'
+
+
 def profile_list(request):
     profiles = Profile.objects.all()
     return render(request, 'mini_fb/profile_list.html', {'profiles': profiles})
 
-# Function-based view for the home page
+
 def home(request):
-    return render(request, 'mini_fb/base.html')  # Specify the template here
+    return render(request, 'mini_fb/base.html') 
 
 
 class ShowAllProfilesView(ListView):
